@@ -1,0 +1,313 @@
+<!-- Tabla por filas en admin -->
+<ng-container *ngIf="isXSmallScreen && !isPartnerRoute">
+  <table mat-table [dataSource]="tableData" class="mat-elevation-z0">
+    <ng-container matColumnDef="combined">
+      <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <div class="single-column">
+          <div>
+            <strong style="margin-right: 2%;">Nombre:</strong> <span class="blue-text">{{ element.name }}</span>
+          </div>
+          <div>
+            <strong>Código:</strong>
+            <ng-container *ngFor="let codigoDistribuidor of element.codes">
+              <div class="codigo-value" style="margin-left: 20%;"
+                (click)="openEditCodigoDistribuidorModal(codigoDistribuidor, element)">
+                {{ codigoDistribuidor.code }}
+              </div>
+            </ng-container>
+
+          </div>
+          <div>
+            <strong>Margen:</strong> {{ element.margin }} %
+          </div>
+          <div>
+            <strong>Empresas:</strong> {{ element.companies }}
+          </div>
+          <div>
+            <strong>Email de Aviso:</strong>
+            <ng-container *ngFor="let emailDistribuidor of element.emails">
+              <div style="margin-left: 20%;">{{ emailDistribuidor.email }}</div>
+            </ng-container>
+          </div>
+          <div>
+            <strong>Activo:</strong>
+            <ng-container *ngIf="element.active">
+              <i class="fa-solid fa-check" style="color: #729c32; font-size: 1.2rem; margin-left: 2%;"></i>
+            </ng-container>
+            <ng-container *ngIf="!element.active">
+              <i class="fa-solid fa-xmark" style="color: #729c32; font-size: 1.2rem; margin-left: 2%;"></i>
+            </ng-container>
+          </div>
+          <div>
+            <strong>Acciones:</strong>
+            <button mat-icon-button (click)="openAsignarDistribuidorModal(element)">
+              <i class="fa-solid fa-pen" style="color: #729c32"></i>
+            </button>
+          </div>
+        </div>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="['combined']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['combined']"></mat-row>
+  </table>
+</ng-container>
+
+<!-- Tabla por filas en partner -->
+<ng-container *ngIf="isXSmallScreen && isPartnerRoute">
+  <table mat-table [dataSource]="tableData" class="mat-elevation-z0">
+    <ng-container matColumnDef="combined">
+      <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <div class="single-column">
+          <div>
+            <strong style="margin-right: 2%;">Nombre:</strong> {{ element.name }}
+          </div>
+          <div>
+            <strong>Versión:</strong><span style="margin-left: 2%;"
+              [ngClass]="{'blue-text': element.currentVersion.toLowerCase() === 'pro'}">{{ element.currentVersion
+              }}</span>
+
+          </div>
+          <div>
+            <strong>Activo:</strong>
+            <ng-container *ngIf="element.active">
+
+              <i class="fa-solid fa-check"
+                style="align-items: center;color: #729c32; font-size: 1.2rem; margin-left: 2%;"></i>
+
+            </ng-container>
+            <ng-container *ngIf="!element.active">
+
+              <i class="fa-solid fa-xmark" style="color: red; font-size: 1.2rem; margin-left: 2%;"></i>
+
+            </ng-container>
+          </div>
+          <div>
+            <strong>Fecha creación:</strong> {{ element.joinDate || '-' }}
+          </div>
+          <div>
+            <strong>Código promocional:</strong> {{ element.code.code }}
+
+          </div>
+          <div>
+            <strong>Grupo de facturación:</strong> {{ element.billing || '-' }}
+          </div>
+          <div>
+            <strong>Empleados activos:</strong> {{ element.employees }}
+
+          </div>
+          <!-- <div>
+            <div class="icon-container">
+              <button mat-icon-button [matMenuTriggerFor]="menu">
+                <i class="fa-solid fa-ellipsis-h"></i>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="openEditarEmpresaModal(element)">
+                  <i class="fa-solid fa-pen" style="align-items: center;color: #729c32;"></i>
+                  <span style="margin-left:10px">editar empresa</span>
+                </button>
+                <button mat-menu-item (click)="toggleClienteActive(element)">
+                  <ng-container *ngIf="element.active">
+                    <i class="fa-solid fa-xmark" style="color: #729c32"></i>
+                    <span style="margin-left:10px">desactivar empresa</span>
+                  </ng-container>
+                  <ng-container *ngIf="!element.active">
+                    <i class="fa-solid fa-check" style="color: #729c32"></i>
+                    <span style="margin-left:10px">activar empresa</span>
+                  </ng-container>
+
+                </button>
+              </mat-menu>
+            </div>
+          </div> -->
+        </div>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="['combined']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['combined']"></mat-row>
+  </table>
+</ng-container>
+
+<ng-container *ngIf="!isXSmallScreen">
+  <table mat-table matSort [dataSource]="tableData" class="mat-elevation-z0">
+
+    <!-- Common Columns -->
+    <ng-container *ngIf="!isPartnerRoute">
+
+      <!-- Nombre Column -->
+      <ng-container matColumnDef="nombre">
+        <div class="columnHeader">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+        </div>
+        <mat-cell *matCellDef="let element" class="blue-text">
+          {{ element.name }}
+        </mat-cell>
+      </ng-container>
+
+      <!-- Codigo Column -->
+      <ng-container matColumnDef="codigo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Código </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <div>
+            <ng-container *ngFor="let codigoDistribuidor of element.codes">
+              <div class="codigo-value" (click)="openEditCodigoDistribuidorModal(codigoDistribuidor, element)">
+                {{ codigoDistribuidor.code }}
+              </div>
+            </ng-container>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Margen Column -->
+      <ng-container matColumnDef="margen">
+        <div class="columnHeader">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Margen </mat-header-cell>
+        </div>
+        <mat-cell *matCellDef="let element"> {{ element.margin }} % </mat-cell>
+      </ng-container>
+
+      <!-- Empresas Column -->
+      <ng-container matColumnDef="empresas">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Empresas </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.companies }} </mat-cell>
+      </ng-container>
+
+      <!-- Acciones Column -->
+      <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <div class="icon-container">
+            <ng-container *ngIf="!element.contract">
+              <app-table-file-input (fileSelected)="onFileSelected($event, element)"></app-table-file-input>
+            </ng-container>
+            <button mat-icon-button *ngIf="element.contract" (click)="openPdf(element.id)">
+              <i class="fa-solid fa-paste" style="color: #729c32"></i>
+            </button>
+            <button mat-icon-button (click)="openAsignarDistribuidorModal(element)">
+              <i class="fa-solid fa-pen" style="color: #729c32"></i>
+            </button>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Email de Aviso Column -->
+      <ng-container matColumnDef="email_aviso">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Email de Aviso </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <ng-container *ngFor="let emailDistribuidor of element.emails">
+            {{ emailDistribuidor.email }}<br>
+          </ng-container>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Activo Column -->
+      <ng-container matColumnDef="activo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Activo </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <div class="icon-container">
+            <ng-container *ngIf="element.active">
+              <i class="fa-solid fa-check" style="align-items: center;color: #729c32; font-size: 1.2rem;"></i>
+            </ng-container>
+            <ng-container *ngIf="!element.active">
+              <i class="fa-solid fa-xmark" style="color: #729c32; font-size: 1.2rem;"></i>
+            </ng-container>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+    </ng-container>
+
+    <!-- Partner-specific Columns -->
+    <ng-container *ngIf="isPartnerRoute">
+
+      <!-- Nombre Column -->
+      <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+      </ng-container>
+
+      <!-- Versión Column -->
+      <ng-container matColumnDef="version">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Versión </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span [ngClass]="{'blue-text': element.currentVersion.toLowerCase() === 'pro'}">
+            {{ element.currentVersion }}
+          </span>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Activa Column -->
+      <ng-container matColumnDef="activo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Activo </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <div class="icon-container">
+            <ng-container *ngIf="element.active">
+              <i class="fa-solid fa-check" style="align-items: center;color: #729c32; font-size: 1.2rem;"></i>
+            </ng-container>
+            <ng-container *ngIf="!element.active">
+              <i class="fa-solid fa-xmark" style="color: red; font-size: 1.2rem;"></i>
+            </ng-container>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Fecha creación Column -->
+      <ng-container matColumnDef="fecha">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha creación </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.joinDate || '-' }} </mat-cell>
+      </ng-container>
+
+      <!-- Código promocional Column -->
+      <ng-container matColumnDef="codigo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Código promocional </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.code.code }} </mat-cell>
+      </ng-container>
+
+      <!-- Grupo de facturación Column -->
+      <ng-container matColumnDef="facturacion">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Grupo de facturación </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.billing || '-' }} </mat-cell>
+      </ng-container>
+
+      <!-- Empleados activos Column -->
+      <ng-container matColumnDef="empleados">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Empleados activos </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.employees }} </mat-cell>
+      </ng-container>
+
+      <!-- Acciones Column -->
+      <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <div class="icon-container">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <i class="fa-solid fa-ellipsis-h"></i>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="openEditarEmpresaModal(element)">
+                <i class="fa-solid fa-pen" style="align-items: center;color: #729c32;"></i>
+                <span style="margin-left:10px">editar empresa</span>
+              </button>
+              <button mat-menu-item (click)="toggleClienteActive(element)">
+                <ng-container *ngIf="element.active">
+                  <i class="fa-solid fa-xmark" style="color: #729c32"></i>
+                  <span style="margin-left:10px">desactivar empresa</span>
+                </ng-container>
+                <ng-container *ngIf="!element.active">
+                  <i class="fa-solid fa-check" style="color: #729c32"></i>
+                  <span style="margin-left:10px">activar empresa</span>
+                </ng-container>
+              </button>
+            </mat-menu>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="isPartnerRoute ? displayedColumnsClient : displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: isPartnerRoute ? displayedColumnsClient : displayedColumns;"></mat-row>
+  </table>
+</ng-container>
+

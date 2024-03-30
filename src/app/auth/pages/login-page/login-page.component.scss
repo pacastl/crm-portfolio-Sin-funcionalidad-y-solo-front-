@@ -1,0 +1,29 @@
+/* .flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+   */
+
+   mat-card {
+    max-width: 40%;
+    margin: 2em auto;
+    text-align: center;
+  }
+  
+  mat-form-field {
+    display: block!important;
+  }
+  .form-field {
+    margin-bottom: 1rem;
+  }
+  .form-button {
+    margin-top: 1rem;
+  }
+  .green{
+    background-color:  rgb(134, 188, 38)!important;
+    color: #fffcfc !important;;
+  }

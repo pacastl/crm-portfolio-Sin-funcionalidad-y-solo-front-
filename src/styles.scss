@@ -1,0 +1,153 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@fortawesome/fontawesome-free/css/all.css';
+@import '~@fortawesome/fontawesome-free/css/regular.css';
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-mdc-tooltip {
+  display: none !important;
+}
+
+.mat-mdc-paginator-range-actions .mat-mdc-paginator-range-label {
+  display: none;
+}
+
+.mat-mdc-paginator-navigation-previous,
+.mat-mdc-paginator-navigation-next {
+  display: none !important;
+}
+
+.mat-paginator-range-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+}
+
+app-dashboard mat-form-field.mat-mdc-form-field:nth-child(2){
+  width: 16%;
+  text-align: center;
+
+}
+
+.mat-mdc-select-value-text{
+  padding: 0%!important;
+  margin: 0%!important;
+  width: auto;
+}
+
+.dashboard-container .mat-mdc-select-arrow-wrapper {
+  display: none;
+}
+app-dashboard mat-form-field .mat-mdc-text-field-wrapper {
+  background-color: transparent !important;
+}
+
+.mat-mdc-form-field-infix {
+  display: inline-block;
+  width: auto;
+}
+.mat-form-field {
+  width: auto !important;
+}
+
+.mdc-notched-outline {
+  max-width: 1px;
+
+}
+
+.my-custom-field .mat-form-field-underline {
+  display: none;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none;
+
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+}
+
+
+.mat-form-field-underline {
+  display: none !important;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none !important;
+}
+
+::ng-deep .custom-class .mat-form-field-underline {
+  display: none;
+}
+
+.mat-form-field .mdc-line-ripple {
+  display: none;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none !important;
+}
+
+.mat-form-field-underline {
+  display: none;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-disabled,
+::ng-deep .mat-form-field-outline {
+  opacity: 0;
+}
+
+
+.mat-chip {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: inline-block;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  padding: 4px 12px;
+  background-color: transparent;
+}
+
+
+::ng-deep .mat-mdc-form-field {
+  width: auto;
+  background-color: red!important;
+}
+
+::ng-deep .mat-mdc-select-value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red!important;
+}
+
+::ng-deep .mat-mdc-select-arrow-wrapper {
+  display: none;
+}
+
+.green{
+  background-color:  rgb(134, 188, 38)!important;
+  color: #fffcfc !important;;
+}
+
+.logo {
+  // width: 1%!important; /* Adjust the width as needed */
+  // height: 5%!important; /* Maintain aspect ratio */
+}

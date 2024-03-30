@@ -1,0 +1,18 @@
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+  }
+  
+  .error-page {
+    text-align: center;
+    color: white;
+  }
+  
+  button {
+    display: inline-block;
+    margin-top: 1rem;
+  }
+  

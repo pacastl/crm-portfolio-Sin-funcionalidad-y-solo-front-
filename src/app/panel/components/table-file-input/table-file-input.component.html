@@ -1,0 +1,6 @@
+<!-- El icono para subir el pdf en la columna de acciones -->
+<button type="button" (click)="fileInput.click()">
+  <i class="fa-solid fa-upload" style="color:#deddda;"></i>
+  <input #fileInput type="file" (change)="onFileChange($event)" style="display:none;" accept=".pdf" />
+</button>
+

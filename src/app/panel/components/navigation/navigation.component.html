@@ -1,0 +1,54 @@
+<!-- La fila superior -->
+<div class="toolbar-container">
+  <mat-toolbar class="white">
+    <!-- <img mat-card-image src="assets/images/angular.svg" alt="Logo"> -->
+    <button
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-icon-button
+      (click)="drawer.toggle()">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>
+
+<mat-sidenav-container [ngClass]="{'expanded': isExpanded}">
+  <mat-sidenav #drawer class="sidenav grey" fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="'side'"
+    [opened]="isSidenavOpened" >
+    <mat-toolbar></mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#" style="background-color:rgb(134, 188, 38) ; text-align: center;"> {{ userName }} {{surname}}
+      <br> {{ userEmail }}</a>
+      <div mat-list-item><i class="fa-solid fa-gauge-high"  style="color: #7cb73b; margin-left: 1rem;padding-right: 4px;"></i>
+        <button mat-button style="color: rgb(134, 188, 38);" (click)="toggleExpanded()">Dashboard</button>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Es todo menos el sidenav(correo y el logo a la izquierda) -->
+  <mat-sidenav-content class="custom-sidenav-content">
+    <!-- Formulario para crear una empresa -->
+    <ng-container *ngIf="router.url === '/panel/admin/nuevoPartner' || router.url === '/panel/partner/nuevaEmpresa'">
+      <app-nuevo-distribuidor></app-nuevo-distribuidor>
+    </ng-container>
+    <!-- El dashboard-->
+    <ng-container *ngIf="!router.url.includes('/nuevoPartner') && !router.url.includes('/nuevaEmpresa')">
+      <app-dashboard [username]="username" [role]="role"></app-dashboard>
+    </ng-container>
+
+    <mat-divider></mat-divider>
+    <!-- <span style="margin-left: 2%;" class="heart">Desarrollado con <i class="fa-solid fa-heart" style="color: #ff0000;"></i> por
+      <button (click)="openSDIPage()" mat-button style="color: rgb(134, 188, 38);" class="btn-sdi">SDI
+      </button> |
+      <button mat-button (click)="openPrivacyPage()" style="color: rgb(134, 188, 38);" class="btn-privacy">Privacidad
+      </button>
+    </span>
+    <span class="copyright">Copyright 2023 <i class="fa-regular fa-copyright" style="color: #444141;"></i>
+      <button mat-button (click)="openHRLOGPage()" style="color: rgb(134, 188, 38);"  class="btn-hrlog">HRLOG.
+      </button> Todos los derechos reservados.
+    </span> -->
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

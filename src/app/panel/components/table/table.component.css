@@ -1,0 +1,62 @@
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+.mat-column-nombre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-column-codigo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-column-email_aviso {
+  display: flex;
+  align-items: center;
+}
+
+.mat-column-empresas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-column-margen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-column-activo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-column-activo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-column-activo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+mat-header-cell {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-header-cell span {
+  margin-left: auto;
+}
+

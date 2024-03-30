@@ -1,0 +1,321 @@
+
+<ng-container *ngIf="!isPartnerRoute">
+  <p><strong>Dashboard Partner</strong></p>
+</ng-container>
+<ng-container *ngIf="isPartnerRoute">
+  <p><strong>Dashboard Distribuidor </strong> Dashboard Partner</p>
+</ng-container>
+<div class="grid-container dashboard-container">
+
+
+  <div class="flex-container">
+    <!-- Four small mat-cards -->
+    <!-- <mat-grid-tile colspan="1" rowspan="8"> -->
+    <div class="flex-item">
+      <mat-card class="dashboard-card image">
+        <mat-card-header>
+        </mat-card-header>
+        <img mat-card-image clas="logo" src="assets/images/android.svg" alt="Logo">
+      </mat-card>
+    </div>
+    <div class="flex-item">
+      <mat-card class="dashboard-card">
+        <mat-card-header class="bold-header">
+          Servicios
+        </mat-card-header>
+        <mat-card-content>
+
+          <ng-container *ngIf="!isPartnerRoute">
+            <div class="card-item">
+              <div class="icon-text-container">
+                <i class="fa-solid fa-percent" style="color: rgb(134, 188, 38)"></i>
+                Códigos activos
+              </div>
+              <span class="data-card">23</span>
+            </div>
+
+            <div class="card-item">
+              <div class="icon-text-container">
+                <i class="fa-solid fa-industry" style="color: rgb(134, 188, 38)"></i>
+                Empresas totales
+              </div>
+              <span class="data-card">41</span>
+            </div>
+            <div class="card-item">
+              <div class="icon-text-container">
+                <i class="fa-solid fa-angle-up" style="color: rgb(134, 188, 38)"></i>
+                Empresas versión Lite
+              </div>
+              <span class="data-card">16</span>
+
+            </div>
+            <div class="card-item">
+              <div class="icon-text-container">
+                <div class="icon-text-container">
+                  <i class="fa-solid fa-angles-up" style="color: rgb(134, 188, 38)"></i>
+                  Empresas versión PRO
+                </div>
+              </div>
+              <span class="data-card">25</span>
+
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="isPartnerRoute">
+            <div class="card-item">
+              <div class="icon-text-container">
+                <i class="fa-solid fa-industry" style="color: rgb(134, 188, 38)"></i>
+                Empresas activas
+              </div>
+              <span class="data-card">26</span>
+            </div>
+            <div class="card-item">
+              <div class="icon-text-container">
+                <i class="fa-solid fa-industry" style="color: rgb(134, 188, 38)"></i>
+                Empleados totales
+              </div>
+              <span class="data-card">125</span>
+            </div>
+            <!-- <span class="data-card">555</span> -->
+
+
+          </ng-container>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="flex-item">
+      <mat-card class="dashboard-card">
+        <ng-container *ngIf="!isPartnerRoute">
+
+          <mat-card-header class="bold-header">
+
+            Datos económicos
+
+          </mat-card-header>
+          <mat-card-content>
+
+            <div class="card-item">
+              <div class="icon-text-container">
+                <i class="fa-solid fa-euro-sign" style="color: rgb(134, 188, 38)"></i>
+                Ingresos (a facturar)
+              </div>
+            </div>
+            <div class="card-item">
+              <div class="icon-text-container">
+                <i class="fa-solid fa-file-invoice" style="color: rgb(134, 188, 38)"></i>
+                Próxima factura partners
+              </div>
+            </div>
+            <div class="card-item">
+              <div class="icon-text-container">
+                <i class="fa-solid fa-calendar-check" style="color: rgb(134, 188, 38)"></i>
+                Beneficio mensual
+              </div>
+            </div>
+            <button mat-button style="color: rgb(134, 188, 38); font-size: 0.8rem;" class="card-item"><strong>Obtener
+                facturación</strong></button>
+
+          </mat-card-content>
+        </ng-container>
+        <ng-container *ngIf="isPartnerRoute">
+          <mat-card-header class="bold-header">
+
+            Versiones
+
+          </mat-card-header>
+
+          <div class="card-item">
+            <div class="icon-text-container">
+              <i class="fa-solid fa-angle-up" style="color: rgb(134, 188, 38)"></i>
+              Empresas versión LITE
+            </div>
+            <span style="margin-right: 12px;" class="data-card">29</span>
+          </div>
+
+          <div class="card-item">
+            <div class="icon-text-container">
+              <i class="fa-solid fa-angles-up" style="color: rgb(134, 188, 38)"></i>
+              Empresas versión PRO
+            </div>
+            <span style="margin-right: 12px;" class="data-card">12</span>
+          </div>
+
+        </ng-container>
+      </mat-card>
+    </div>
+
+    <div class="flex-item">
+      <mat-card class="dashboard-card">
+        <ng-container *ngIf="!isPartnerRoute">
+          <mat-card-header class="bold-header">
+
+            Tipo de partner
+
+          </mat-card-header>
+          <mat-card-content>
+            <div class="card-item yellow-border">
+              <span>
+                <i class="fa-solid fa-briefcase" style="color: #F4C430">
+                </i>
+                Referenciador
+              </span>
+              <span class="data-card">11</span>
+            </div>
+            <div class="card-item green-border">
+              <span>
+                <i class="fa-solid fa-briefcase" style="color: rgb(134, 188, 38)">
+                </i>Partner Supra
+              </span>
+              <span class="data-card">24</span>
+            </div>
+            <div class="card-item blue-border">
+              <span>
+                <i class="fa-solid fa-briefcase" style="color: #0096FF"></i>Partner
+              </span>
+              <span class="data-card">34</span>
+            </div>
+          </mat-card-content>
+
+        </ng-container>
+
+        <ng-container *ngIf="isPartnerRoute">
+          <mat-card-header class="bold-header">
+
+            Datos económicos
+
+          </mat-card-header>
+          <mat-card-content>
+
+            <div class="card-item">
+              <div class="icon-text-container">
+                <i class="fa-solid fa-percent" style="color: rgb(134, 188, 38)"></i>
+                Códigos activos
+              </div>
+              <span style="margin-right: 6px;" class="data-card">{{countCodigosDistri}}</span>
+            </div>
+            <div class="card-item">
+              <div class="icon-text-container">
+                <i class="fa-solid fa-file-invoice" style="color: rgb(134, 188, 38)"></i>
+                Próxima factura partners
+              </div>
+            </div>
+            <div class="card-item">
+              <div class="icon-text-container">
+                <i class="fa-solid fa-calendar-check" style="color: rgb(134, 188, 38)"></i>
+                Beneficio mensual
+              </div>
+            </div>
+            <button mat-button style="color: rgb(134, 188, 38); font-size: 0.8rem;" class="card-item"><strong>Obtener
+                facturación</strong></button>
+
+          </mat-card-content>
+        </ng-container>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Search bar mat-card -->
+
+
+  <div class="flex-container">
+
+    <div class="flex-item">
+      <mat-card class="dashboard-card-search">
+        <mat-form-field appearance="fill" subscriptSizing="dynamic" class="custom-class">
+          <mat-icon-button matPrefix>
+            <mat-icon style="margin-left:2rem">search</mat-icon>
+          </mat-icon-button>
+          <input matInput (keyup)="onFilterChange($event)" placeholder="{{ placeholder }}" #input>
+        </mat-form-field>
+      </mat-card>
+    </div>
+  </div>
+
+
+  <!-- Large mat-card with paginator and buttons -->
+
+  <div class="flex-container">
+    <div class="flex-item">
+      <mat-card class="dashboard-card large-card">
+        <mat-card-header>
+          <!-- El paginador, la aprte de resultados por página -->
+          <!-- <mat-paginator class="center-num" [length]="totalItems" [pageSizeOptions]="[5, 10, 25, 50]" -->
+          <mat-paginator class="center-num" [length]="totalItems" [pageSizeOptions]="[50,50]"
+            (page)="onPageChange($event)" [class.disabled-paginator-option]="true">
+          </mat-paginator>
+
+          <div class="button-container">
+            <ng-container *ngIf="!isPartnerRoute">
+              <button class="green" mat-flat-button (click)="redirectToNewDistribudor()">
+                <i class="fa-solid fa-circle-plus"></i>
+
+                Nuevo distribuidor
+              </button>
+            </ng-container>
+
+            <ng-container *ngIf="!isPartnerRoute">
+
+
+              <button class="green" mat-flat-button (click)="openModalAsignar()">
+                <i class="fa-solid fa-circle-plus"></i> Asignar distribuidor
+              </button>
+              <button class="green" mat-flat-button [matMenuTriggerFor]="menu">
+                <!-- <i class="fa-solid fa-arrows-rotate" style="color: #ffffff;"></i> Sincronizar con Holded -->
+                <i class="fa-solid fa-arrows-rotate" style="color: #ffffff;"></i> Sincronizar
+
+              </button>
+
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="sendRequestHoldedCommand()">Todos</button>
+                <button mat-menu-item (click)="sendRequestHoldedCommand(false)">Recientes</button>
+              </mat-menu>
+
+            </ng-container>
+
+            <ng-container *ngIf="isPartnerRoute">
+              <button class="green" mat-flat-button (click)="redirectToNewEmpresa()">
+                <i class="fa-solid fa-circle-plus"></i>
+
+                Nueva empresa
+              </button>
+            </ng-container>
+          </div>
+          <div>
+            <button mat-button (click)="previousPage()" [disabled]="isFirstPage()">Anterior</button>
+
+            <button class="green" mat-button [disabled]="true">{{currentPage}}</button>
+            <button mat-button (click)="nextPage()">Siguiente</button>
+
+          </div>
+
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content" style="height: 100%;">
+          <div class="table-container">
+            <app-table [filterValue]="filterValue"></app-table>
+          </div>
+
+        </mat-card-content>
+        <mat-card-footer>
+
+          <div class="pagination">
+
+            <div></div>
+            <div>
+
+              <button mat-button (click)="previousPage()" [disabled]="isFirstPage()">Anterior</button>
+
+              <button mat-button class="green small" [disabled]="true">{{currentPage}}</button>
+              <button mat-button (click)="nextPage()">Siguiente</button>
+
+            </div>
+
+          </div>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+
+
+</div>
+
+<!-- </ng-container> -->

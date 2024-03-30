@@ -1,0 +1,120 @@
+<h2 mat-dialog-title>Asignar distribuidor
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off">
+
+  <div class="field">
+    <div class="col-sm-3">
+      <mat-label><span class="red-asterisk">*</span> Promo</mat-label>
+    </div>
+
+    <!-- Promo field (chip list) -->
+    <div style="height: fit-content">
+      <mat-form-field class="example-chip-list field" appearance="outline">
+        <mat-chip-grid #chipGrid aria-label="Enter promo codes">
+          <mat-chip-row *ngFor="let codigo of codes" (removed)="remove(codigo)" [editable]="true"
+            (edited)="edit(codigo, $event)" [aria-description]="'press enter to edit ' + codigo.code">
+            {{codigo.code}}
+            <button matChipRemove [attr.aria-label]="'remove ' + codigo.code">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+          <!-- [matChipInputFor]="chipGrid" vincula este campo de entrada con el componente mat-chip-grid -->
+          <!-- [matChipInputSeparatorKeyCodes]="separatorKeysCodes" especifica los elementos (, y enter)que se utilizarán como separadores al añadir nuevos chips  -->
+          <!--(matChipInputTokenEnd)="add($event)" se activa cuando se completa el añadido de un nuevo chip y llama a la función add() del .ts pasando el evento como argumento -->
+          <input [matChipInputFor]="chipGrid" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="add($event)" />
+        </mat-chip-grid>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div>
+    <label class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+      <mat-checkbox color="basic" id="flexCheckDefault" formControlName="active">
+        <mat-label>Activo</mat-label>
+      </mat-checkbox>
+    </div>
+  </div>
+
+
+  <div class="field">
+    <div class="col-sm-3">
+      <mat-label><span class="red-asterisk">*</span> Margen</mat-label>
+    </div>
+    <div class="col-sm-9">
+      <mat-form-field appearance="outline" style="width: 100%;">
+        <input matInput formControlName="margin" placeholder="">
+        <mat-error *ngIf="isValidField('margin')">
+          Debe estar entre 0 y 100
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Empresa asociada al código field -->
+  <div>
+    <div class="col-sm-3">
+      <mat-label><span class="red-asterisk">*</span> Empresa asociada al código</mat-label>
+    </div>
+    <div class="col-sm-9">
+      <mat-form-field class="withoutArrow" appearance="outline" class="field">
+        <mat-select formControlName="name" placeholder="Seleccione un valor">
+          <mat-option *ngFor="let distribuidor of data.allDistribuidors" [value]="distribuidor.name">
+            {{ distribuidor.name }}
+          </mat-option>
+        </mat-select>
+        <mat-icon matSuffix (click)="clear()">cancel</mat-icon>
+        <mat-error *ngIf="isValidField('name')">
+          Debe elegir un valor
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+
+  <!-- Tipo de distribuidor field -->
+  <div>
+    <div class="col-sm-3">
+      <mat-label><span class="red-asterisk">*</span> Tipo de distribuidor</mat-label>
+    </div>
+    <div class="col-sm-9">
+      <mat-form-field class="withoutArrow" appearance="outline" class="field">
+        <mat-select formControlName="type" placeholder="Seleccione un valor">
+          <mat-option value="Partner Supra">Partner Supra</mat-option>
+          <mat-option value="Partner">Partner</mat-option>
+          <mat-option value="Referenciador">Referenciador</mat-option>
+        </mat-select>
+        <mat-icon matSuffix (click)="clear()">cancel</mat-icon>
+        <mat-error *ngIf="isValidField('type')">
+          Debe elegir un valor
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+  </div>
+
+  <!-- El input para arrastrar el pdf -->
+  <app-custom-file-input [accept]="'.pdf'" (fileSelected)="onFileSelected($event)"></app-custom-file-input>
+
+  <mat-dialog-actions>
+    <button color="basic" mat-flat-button matDialogClose mat-button class="cancel">Cerrar</button>
+
+    <button class="green" color="primary" mat-flat-button mat-button [mat-dialog-close]="{}" cdkFocusInitial
+      (click)="onSubmit()">Guardar</button>
+  </mat-dialog-actions>
+
+
+</mat-dialog-content>
+
+<!-- <span>Valid</span>
+<pre>{{ myForm.valid| json }}</pre>
+<br>
+
+<span>Value</span>
+<pre>{{ myForm.value | json }}</pre>
+<br> -->

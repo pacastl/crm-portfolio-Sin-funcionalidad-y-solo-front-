@@ -1,0 +1,10 @@
+
+  <div class="field" (drop)="onFileDrop($event)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)">
+    <input type="file" #fileInput (change)="onFileInputChange($event)" [accept]="accept" hidden />
+    <div class="file-input-text" (click)="fileInput.click()">
+      <i class="fa-solid fa-upload">  </i><br>
+
+      Arrastra el adjunto o haz click aquí. (Máx. 4MB)
+    </div>
+  </div>
+  

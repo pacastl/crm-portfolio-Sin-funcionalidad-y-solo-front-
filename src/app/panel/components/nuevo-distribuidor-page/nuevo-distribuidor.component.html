@@ -1,0 +1,456 @@
+
+
+<h2>Crear distribuidor</h2>
+<!-- <hr> -->
+<mat-card class="mat-card-no-border">
+    <!-- <div class="mat-elevation-z2 p-3"> -->
+    <mat-card-content>
+        <ng-container *ngIf="!isPartnerRoute">
+
+            <form [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off" class="form-container">
+
+                <h3>Datos del distribuidor</h3>
+
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Nuevo código promocional</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <input matInput type="text" formControlName="nuevoCodigo"
+                                placeholder="Nuevo código promocional">
+                            <mat-error *ngIf="isValidField('nuevoCodigo')">
+                                Este campo es obligatorio.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+                <!-- Emails de aviso -->
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Email de aviso</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <input matInput type="text" formControlName="warningEmails" placeholder="Emails de aviso">
+                            <mat-error *ngIf="isValidField('warningEmails')">
+                                Este campo es obligatorio.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <!-- Tipo de distribuidor -->
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Tipo de distribuidor</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <mat-select formControlName="type" placeholder="Seleccione un valor">
+                                <mat-option value="Partner">Partner</mat-option>
+                                <mat-option value="Partner Supra">Partner Supra</mat-option>
+                                <mat-option value="Referenciador">Referenciador</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="isValidField('type')">
+                                Debe elegir un valor.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+
+                <!-- Margen -->
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Margen</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <input matInput type="number" formControlName="margin" placeholder="Margen" min="0"
+                                max="100" step="1">
+                            <mat-error *ngIf="isValidField('margin')">
+                                Debe estar entre 0 y 100.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <h3>Datos de la empresa</h3>
+
+                <!-- Nombre de la empresa -->
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Nombre de la empresa</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <input matInput type="text" formControlName="companyName"
+                                placeholder="Nombre de la empresa">
+                            <mat-error *ngIf="isValidField('companyName')">
+                                Este campo es obligatorio.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <!-- NIF -->
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> NIF</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <input matInput type="text" formControlName="nif" placeholder="NIF de la empresa"
+                                pattern="\d{8}[A-Z]">
+                            <mat-error *ngIf="isValidField('nif')">
+                                Debe ser 8 dígitos seguidos de una letra mayúscula.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <!-- Teléfono -->
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Teléfono</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <input matInput type="tel" formControlName="phone"
+                                placeholder="Teléfono de contacto de la empresa">
+                            <mat-error *ngIf="isValidField('phone')">
+                                Este campo es obligatorio.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+
+
+                <!-- Código -->
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Código</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <mat-select formControlName="code" placeholder="Seleccione un valor">
+                                <mat-option *ngFor="let codigo of codes" [value]="codigo">{{ codigo.code
+                                    }}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="isValidField('code')">
+                                Debe elegir un valor.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Versión </mat-label>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-select formControlName="version" placeholder="Seleccione un valor">
+                                <mat-option value="Lite">Lite</mat-option>
+                                <mat-option value="Pro">Pro</mat-option>
+
+                            </mat-select>
+                            <mat-error *ngIf="isValidField('code')">
+                                Debe elegir un valor.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Empleados</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <input matInput type="number" formControlName="employees" placeholder="Margen" min="0"
+                                max="100" step="1">
+                            <mat-error *ngIf="isValidField('margin')">
+                                Debe estar entre 0 y 100.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span>*</span> Grupo de facturación</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <input matInput type="text" formControlName="billing" placeholder="Grupo de facturación">
+                            <mat-error *ngIf="isValidField('nuevoCodigo')">
+                                Este campo es obligatorio.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <h3>Datos del usuario</h3>
+
+
+
+                <!-- Nombre -->
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Nombre</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <input matInput type="text" formControlName="name" placeholder="Nombre del usuario">
+                            <mat-error *ngIf="isValidField('name')">
+                                Este campo es obligatorio.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+
+                <!-- Apellidos -->
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Apellidos</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <input matInput type="text" formControlName="surname" placeholder="Apellidos del usuario">
+                            <mat-error *ngIf="isValidField('surname')">
+                                Este campo es obligatorio.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+                <!-- DNI -->
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> DNI</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <input matInput type="text" formControlName="dni" placeholder="DNI del usuario">
+                            <mat-error *ngIf="isValidField('dni')">
+                                Este campo es obligatorio.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Email</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <input matInput type="email" formControlName="email" placeholder="Email del usuario">
+                            <mat-error *ngIf="isValidField('email')">
+                                Debe ser un correo electrónico válido.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Contraseña</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <input matInput type="password" formControlName="password"
+                                placeholder="Contraseña del usuario">
+                            <mat-error *ngIf="isValidField('password')">
+                                La contraseña debe tener al menos 6 caracteres.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <!-- Repita contraseña -->
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Repita contraseña</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <input matInput type="password" formControlName="password2"
+                                placeholder="Repita la contraseña">
+                            <mat-error *ngIf="isValidField('password2')">
+                                Las contraseñas deben coincidir.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <!-- Rol -->
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Rol del usuario</mat-label>
+                    </div>
+                    <div>
+                        <label class="col-sm-3 col-form-label"></label>
+                        <div class="col-sm-9">
+                            <mat-checkbox color="basic" id="flexCheckDefault" formControlName="admin">
+                                <mat-label>Administrador</mat-label>
+                            </mat-checkbox>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div>
+                    <button mat-raised-button color="primary" class="mat-button mat-button-wrapper mr-2 green"
+                        style="float:right">
+                        Guardar
+                    </button>
+                </div>
+
+            </form>
+        </ng-container>
+
+        <ng-container *ngIf="isPartnerRoute">
+            <form [formGroup]="myForm" (ngSubmit)="onSubmitClient()" autocomplete="off" class="form-container">
+
+                <h3>Datos de la empresa</h3>
+
+                <!-- Nombre de la empresa -->
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Nombre de la empresa</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <input matInput type="text" formControlName="companyName"
+                                placeholder="Nombre de la empresa">
+                            <mat-error *ngIf="isValidField('companyName')">
+                                Este campo es obligatorio.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <!-- NIF -->
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> NIF</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <input matInput type="text" formControlName="nif" placeholder="NIF de la empresa"
+                                pattern="\d{8}[A-Z]">
+                            <mat-error *ngIf="isValidField('nif')">
+                                Debe ser 8 dígitos seguidos de una letra mayúscula.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <!-- Teléfono -->
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Teléfono</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <input matInput type="tel" formControlName="phone"
+                                placeholder="Teléfono de contacto de la empresa">
+                            <mat-error *ngIf="isValidField('phone')">
+                                Este campo es obligatorio.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+
+
+                <!-- Código -->
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Código</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <mat-select formControlName="code" placeholder="Seleccione un valor">
+                                <mat-option *ngFor="let codigo of codes" [value]="codigo">{{ codigo.code
+                                    }}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="isValidField('code')">
+                                Debe elegir un valor.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Versión</mat-label>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-select formControlName="version" placeholder="Seleccione un valor">
+                                <mat-option value="Lite">Lite</mat-option>
+                                <mat-option value="Pro">Pro</mat-option>
+
+                            </mat-select>
+                            <mat-error *ngIf="isValidField('code')">
+                                Debe elegir un valor.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="col-sm-3">
+                        <mat-label><span class="red-asterisk">*</span> Empleados</mat-label>
+                    </div>
+                    <div class="col-sm-9">
+                        <mat-form-field appearance="outline">
+                            <input matInput type="number" formControlName="employees" placeholder="Margen" min="0"
+                                max="100" step="1">
+                            <mat-error *ngIf="isValidField('margin')">
+                                Debe estar entre 0 y 100.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <ng-container *ngIf="isPartnerRoute">
+                    <div></div>
+                </ng-container>
+                <div>
+
+                    <button mat-raised-button color="primary" class="mat-button mat-button-wrapper mr-2 green"
+                        style="float:right">
+
+                        Guardar
+                    </button>
+                </div>
+
+            </form>
+        </ng-container>
+
+    </mat-card-content>
+
+
+    <!-- </div> -->
+</mat-card>

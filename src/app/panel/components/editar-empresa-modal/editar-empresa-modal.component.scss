@@ -1,0 +1,41 @@
+button {
+  float: right;
+}
+button.cancel {
+  background-color: #F5F5F5;
+  color: black;
+}
+
+mat-dialog-actions {
+  float: right;
+}
+
+.mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.red-asterisk {
+  color: red;
+}
+
+.mat-divider {
+  margin-bottom: 1rem;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+button[mat-dialog-close] {
+  color: grey;
+}
+button.cancel:hover {
+  background-color: #E0E0E0;
+}
+
+.field{
+  width: 100%!important;
+  margin-top:10px;
+  margin-bottom: 10px;
+}

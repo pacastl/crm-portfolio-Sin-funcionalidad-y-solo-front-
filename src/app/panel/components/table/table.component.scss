@@ -1,0 +1,50 @@
+
+.blue-text {
+  color: rgb(0, 102, 255);
+  text-transform: uppercase;
+}
+
+.mat-column-codigo div.codigo-value {
+   display: block;
+}
+.codigo-value {
+  display: block;
+  width: 100%; // Add this line
+  // background-color: red;
+}
+
+
+
+.codigo-value {
+  display: block!important;
+ 
+}
+
+.single-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-table {
+  table-layout: auto;
+}
+
+
+
+
+
+.mat-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+}
+
+
+
+.mat-column-version {
+  display: flex;
+  align-items: center;
+    // justify-content: center;
+}
+

@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-content>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+      <h2>Login panel de partners</h2>
+      <mat-error *ngIf="!loginValid">
+        Email y/o contraseña incorrectos
+      </mat-error>
+      <mat-form-field class="form-field" appearance="outline">
+        <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+        <mat-error>
+          Por favor, proporcione una dirección de correo válida
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+        <mat-error>
+          Por favor, proporcione una contraseña
+        </mat-error>
+      </mat-form-field>
+      <!-- [disabled]="!loginForm.form.valid" -->
+      <button class="green" mat-raised-button  class="form-button">Login</button>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Editar empresa
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</h2>
+
+<mat-divider></mat-divider>
+
+<mat-dialog-content [formGroup]="myForm" (ngSubmit)="onSave()" autocomplete="off" class="form-container">
+
+  <div class="col-sm-3">
+    <mat-label><span class="red-asterisk">*</span> Nombre empresa</mat-label>
+  </div>
+
+  <mat-form-field appearance="outline" class="field">
+    <input matInput formControlName="name" placeholder="">
+    <mat-error *ngIf="isValidField('name')">
+      El nombre de la empresa es obligatorio
+    </mat-error>
+  </mat-form-field>
+
+  <div class="row mb-3">
+    <div class="col-sm-3">
+      <mat-label><span class="red-asterisk">*</span> NIF</mat-label>
+    </div>
+    <div class="col-sm-9">
+      <mat-form-field appearance="outline" class="field">
+        <input matInput formControlName="nif" placeholder="">
+        <mat-error *ngIf="isValidField('nif')">
+          El NIF es obligatorio
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <mat-dialog-actions>
+    <button color="basic" mat-flat-button matDialogClose mat-button class="cancel">Cerrar</button>
+    <button color="primary" class="green" mat-flat-button mat-button (click)="onSave()" cdkFocusInitial>Guardar</button>
+  </mat-dialog-actions>
+
+</mat-dialog-content>

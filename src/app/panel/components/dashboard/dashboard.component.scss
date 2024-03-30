@@ -1,0 +1,302 @@
+p {
+  padding-top: 2.5%;
+  margin-left: 2%;
+}
+
+.mat-select-arrow {
+  border: none !important;
+
+}
+
+.dashboard-form-field {
+  height: 100%;
+}
+
+.mat-mdc-form-field-hint-spacer {
+  display: none;
+}
+
+.search-field {
+  height: 100%;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.mat-form-field-underline {
+  display: none;
+}
+
+
+
+.card-header-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -12px;
+  margin-right: -12px;
+}
+
+
+.page-size-label {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-card.large-card {
+
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.mat-paginator {
+  flex-grow: 0;
+  margin-right: auto;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+.button-container button {
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pagination button {
+  margin: 0;
+}
+
+.info {
+  margin-left: 1.5rem;
+}
+
+
+
+.mat-mdc-form-field-infix {
+  display: inline-block;
+  width: auto;
+}
+
+::ng-deep .mdc-line-ripple::after {
+  border-bottom-width: 0 !important;
+}
+
+
+.mat-form-field-underline {
+  display: none;
+}
+
+.mat-mdc-form-field.mat-mdc-form-field-type-mat-select .mat-form-field-underline {
+  display: none !important;
+}
+
+.my-custom-field .mat-form-field-underline {
+  display: none;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+  display: none;
+}
+
+.mat-form-field-underline {
+  display: none;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none !important;
+}
+
+::ng-deep .custom-class .mat-form-field-underline {
+  display: none;
+}
+
+.mat-form-field .mdc-line-ripple {
+  display: none;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none !important;
+}
+
+.mat-form-field-underline {
+  display: none;
+}
+
+// MALOOOOOOOO arriba
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-disabled,
+::ng-deep .mat-form-field-outline {
+  opacity: 0;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+::ng-deep .search-field .mat-form-field-underline {
+  display: none;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+.bold-header {
+  font-weight: bold;
+}
+
+.card-item {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.card-item i {
+  margin-right: 10px;
+  padding-left: 10px;
+}
+.yellow-border {
+  border: 2px solid rgb(250, 241, 211);
+  margin: 1rem 0;
+}
+
+.blue-border {
+  border: 2px solid #0096FF;
+  margin: 1rem 0;
+}
+
+.green-border {
+  border: 2px solid rgb(134, 188, 38);
+  margin: 1rem 0;
+}
+::ng-deep .mat-mdc-paginator-range-label {
+  display: none !important;
+}
+
+.mat-select-value-text {
+  text-align: center;
+}
+
+.mat-form-field {
+  width: auto;
+}
+
+.green {
+  background-color: rgb(134, 188, 38);
+}
+
+.title {
+  margin-top: 2.5rem;
+
+}
+
+.data {
+  float: right;
+}
+
+.mat-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-card-content {
+  flex-grow: 1;
+}
+.card-hrlog {
+  justify-content: center;
+
+}
+
+.img-hrlog {
+  width: 100% !important;
+  padding: 20%;
+  min-width: 150px;
+}
+
+.mat-select {
+  width: auto;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-item {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.flex-item {
+  flex: 1;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  min-width: calc(25% - 30px);
+}
+
+@media (max-width: 1200px) {
+  .flex-item {
+    min-width: calc(50% - 30px);
+  }
+}
+
+@media (max-width: 690px) {
+  .flex-item {
+    min-width: 60%;
+    max-width: 95%;
+    margin-left: 10px;
+    margin-right: 0%;
+  }
+  .sidebar {
+    display: none!important;
+  }
+}
+
+.dashboard-card {
+  flex-grow: 1;
+
+}
+
+.image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-card img {
+  min-width: 50%;
+  align-self: center;
+}
+
+.small{
+  padding: 0px;
+  background-size: 5px!important;
+
+}

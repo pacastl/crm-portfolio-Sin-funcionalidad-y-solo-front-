@@ -1,0 +1,67 @@
+
+.red-asterisk {
+  color: red;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -4px;
+}
+
+.chip-row mat-chip {
+  margin: 4px;
+}
+
+.mat-divider {
+  margin-bottom: 1rem;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+button[mat-dialog-close] {
+  color: grey;
+  float: right;
+
+}
+
+mat-dialog-actions {
+  float: right;
+}
+
+button.cancel {
+  background-color: #F5F5F5;
+  color: black;
+}
+
+button.cancel {
+  background-color: #F5F5F5;
+  color: black;
+}
+
+button.cancel:hover {
+  background-color: #E0E0E0;
+}
+
+.mat-chip {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: inline-block;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  padding: 4px 12px;
+  background-color: transparent;
+}
+
+.mat-chip-text {
+  color: black;
+}
+
+
+.field{
+  width: 100%!important;
+  margin-top:10px;
+  margin-bottom: 10px;
+}

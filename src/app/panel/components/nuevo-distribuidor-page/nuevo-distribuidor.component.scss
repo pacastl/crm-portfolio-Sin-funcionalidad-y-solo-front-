@@ -1,0 +1,40 @@
+.form-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+
+}
+h2{
+  margin-top: 1%;
+}
+
+h3 {
+  /* grid-row-end: div 1; */
+  grid-column: 1 / -1;
+  font-weight: bold;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+.red-asterisk {
+  color: red;
+}
+:host {
+  display: block;
+  background-color: rgb(243, 243, 243); /* replace with the desired shade of grey */
+  padding: 20px; /* add some padding to create some separation from the card */
+}
+mat-card {
+  /* display: flex; */
+  box-shadow: none;
+  border: none;
+  outline: none;
+}
+.mat-mdc-form-field-infix {
+width:50%;
+}
+mat-form-field{
+  // background-color: rgb(255, 217, 0)!important;
+width:100%;
+}

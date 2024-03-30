@@ -1,0 +1,62 @@
+
+.toolbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.sidenav-container {
+  margin-top: 64px;
+}
+// Hace desaparece el sidebar (lo del nombre del usuario )
+@media (max-width: 690px) {
+  .mat-sidenav{
+    display: none;
+  }
+}
+.sidenav-container.expanded {
+  height: 100%;
+}
+
+.white {
+  background-color: white;
+}
+
+
+
+.mat-sidenav-content {
+  overflow-y: hidden;
+}
+
+
+.center-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-sidenav {
+  max-width: 20%;
+}
+
+.button-sdi {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.btn-privacy,
+.btn-hrlog,
+.btn-sdi {
+  min-width: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.fa-copyright{
+  margin-right: 2px;
+}
+.copyright{
+  float:right;
+}
